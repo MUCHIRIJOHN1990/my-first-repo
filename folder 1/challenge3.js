@@ -1,18 +1,17 @@
 function calculateNetSalary() {
-    // Prompt the user for basic salary and benefits
+    
     let basicSalary = parseFloat(prompt("Enter your basic salary:"));
     let benefits = parseFloat(prompt("Enter your benefits:"));
 
-    // Calculate the gross salary
+    
     let grossSalary = basicSalary + benefits;
 
-    // Define the NSSF rate (assuming it's a fixed percentage of gross salary)
-    const NSSF_RATE = 0.06; // 6%
+    
+    const NSSF_RATE = 0.06; 
 
-    // Calculate NSSF deduction
     let nssfDeduction = grossSalary * NSSF_RATE;
 
-    // Define the NHIF deductions based on gross salary
+    
     let nhifDeduction;
     if (grossSalary <= 5999) {
         nhifDeduction = 150;
@@ -49,8 +48,7 @@ function calculateNetSalary() {
     } else {
         nhifDeduction = 1700;
     }
-
-    // Calculate the payee (tax) based on monthly gross salary
+    
     let payee;
     if (grossSalary <= 24000) {
         payee = grossSalary * 0.1;
@@ -64,10 +62,10 @@ function calculateNetSalary() {
         payee = 24000 * 0.1 + (32333 - 24000) * 0.25 + (500000 - 32333) * 0.3 + (800000 - 500000) * 0.325 + (grossSalary - 800000) * 0.35;
     }
 
-    // Calculate the net salary
+
     let netSalary = grossSalary - payee - nhifDeduction - nssfDeduction;
 
-    // Display the results
+    
     alert(`Gross Salary: Ksh ${grossSalary.toFixed(2)}
 Payee (Tax): Ksh ${payee.toFixed(2)}
 NHIF Deduction: Ksh ${nhifDeduction.toFixed(2)}
@@ -75,5 +73,4 @@ NSSF Deduction: Ksh ${nssfDeduction.toFixed(2)}
 Net Salary: Ksh ${netSalary.toFixed(2)}`);
 }
 
-// Call the function to test it
 calculateNetSalary();
